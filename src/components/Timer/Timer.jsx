@@ -43,6 +43,7 @@ export const Timer = () => {
       <p className={css.description}>Please enter the start date</p>
       <form className={css.form}>
         <Flatpickr
+          className={css.input}
           ref={interval}
           options={{
             enableTime: true,

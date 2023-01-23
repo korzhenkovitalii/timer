@@ -20,19 +20,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  font-size: 24px;
+
   margin-bottom: 20px;
 }
 
-.form__input {
-  font-size: 24px;
+.input {
+  font-size: inherit;
   border: none;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  color: #969494;
+  background-color: #494949;
 }
 
 .form__button {
-  border-radius: 10px;
-  font-size: 18px;
-  padding: 4px 8px;
+  font-size: inherit;
+
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
   border: none;
 }
 
