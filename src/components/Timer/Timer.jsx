@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Flatpickr from "react-flatpickr";
 
 import "flatpickr/dist/flatpickr.css";
@@ -42,8 +42,29 @@ export const Timer = () => {
 
   return (
     <div className={css.wrapper}>
-      <h1 className={css.title}>Our timer ready</h1>
-      <p className={css.description}>Please enter the start date</p>
+      <p className={css.mail}>v.korzhenko85@gmail.com</p>
+      <div className={css.description}>
+        <h1 className={css.title}>Our Timer is almost ready</h1>
+        <p>Please enter the end date and time of the timer</p>
+      </div>
+      <div className={css.time}>
+        <div className={css.time__box}>
+          <span className={css.time__number}>{days}</span>
+          <span className={css.time__name}>Days</span>
+        </div>
+        <div className={css.time__box}>
+          <span className={css.time__number}>{hours}</span>
+          <span className={css.time__name}>Hours</span>
+        </div>
+        <div className={css.time__box}>
+          <span className={css.time__number}>{minutes}</span>
+          <span className={css.time__name}>Minutes</span>
+        </div>
+        <div className={css.time__box}>
+          <span className={css.time__number}>{seconds}</span>
+          <span className={css.time__name}>Seconds</span>
+        </div>
+      </div>
       <form className={css.form}>
         <Flatpickr
           className={css.input}
@@ -71,24 +92,6 @@ export const Timer = () => {
           Stop
         </button>
       </form>
-      <div className={css.time}>
-        <div className={css.time__box}>
-          <span className={css.time__number}>{days}</span>
-          <span className={css.time__name}>Days</span>
-        </div>
-        <div className={css.time__box}>
-          <span className={css.time__number}>{hours}</span>
-          <span className={css.time__name}>Hours</span>
-        </div>
-        <div className={css.time__box}>
-          <span className={css.time__number}>{minutes}</span>
-          <span className={css.time__name}>Minutes</span>
-        </div>
-        <div className={css.time__box}>
-          <span className={css.time__number}>{seconds}</span>
-          <span className={css.time__name}>Seconds</span>
-        </div>
-      </div>
     </div>
   );
 };
