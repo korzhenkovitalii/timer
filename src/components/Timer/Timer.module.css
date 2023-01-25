@@ -20,8 +20,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   font-size: 24px;
-
+  gap: 5px;
   margin-bottom: 20px;
 }
 
@@ -37,8 +38,7 @@
 .form__button {
   font-size: inherit;
 
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-radius: 5px;
   border: none;
 }
 

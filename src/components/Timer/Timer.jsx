@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Flatpickr from "react-flatpickr";
 
 import "flatpickr/dist/flatpickr.css";
@@ -11,15 +11,16 @@ export const Timer = () => {
   const [seconds, setSeconds] = useState("00  ");
   const [date, setDate] = useState(null);
 
-  let interval = useRef(null);
+  let intervalId = useRef(null);
 
-  const startTimer = () => {
-    const countdownDate = new Date(date).getTime();
-    console.log(countdownDate);
+  const startTimer = (date) => {
+    if (!date) return;
 
-    interval = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = countdownDate - now;
+    clearInterval(intervalId.current);
+
+    intervalId.current = setInterval(() => {
+      const countdownDate = new Date(date).getTime();
+      const distance = countdownDate - Date.now();
 
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor(
@@ -32,10 +33,12 @@ export const Timer = () => {
       setHours(hours);
       setMinutes(minutes);
       setSeconds(seconds);
-
-      clearInterval(interval.current);
     }, 1000);
   };
+
+  function stopTimer() {
+    clearInterval(intervalId.current);
+  }
 
   return (
     <div className={css.wrapper}>
@@ -44,7 +47,6 @@ export const Timer = () => {
       <form className={css.form}>
         <Flatpickr
           className={css.input}
-          ref={interval}
           options={{
             enableTime: true,
             minDate: "today",
@@ -52,16 +54,21 @@ export const Timer = () => {
             defaultDate: new Date(),
             minuteIncrement: 1,
           }}
-          onChange={(e) => {
-            setDate(e);
-          }}
+          onChange={(e) => setDate(e)}
         />
         <button
           className={css.form__button}
           type="button"
-          onClick={() => startTimer()}
+          onClick={() => startTimer(date)}
         >
           Enter
+        </button>
+        <button
+          className={css.form__button}
+          type="button"
+          onClick={() => stopTimer()}
+        >
+          Stop
         </button>
       </form>
       <div className={css.time}>
